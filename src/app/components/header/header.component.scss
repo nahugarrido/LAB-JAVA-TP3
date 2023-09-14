@@ -1,0 +1,9 @@
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: var(--header-component-height);
+    background-color: var(--header-component-background-color);
+    border-bottom: 1px solid var(--border-color-primary);
+    box-shadow: 0 0 2px var(--border-color-primary);
+}

@@ -1,0 +1,12 @@
+<aside class="sidebar" [class.sidebar-hidden]="!isSidebarVisible">
+  <p>sidebar works!</p>
+</aside>
+<button
+  id="close-sidebar"
+  [ngClass]="{ invertcolor: isSidebarVisible }"
+  (click)="toggleSidebar()"
+  *ngIf="windowInnerWidth <= 768"
+>
+  <i *ngIf="isSidebarVisible" class="bi bi-x"></i>
+  <i *ngIf="!isSidebarVisible" class="bi bi-list"></i>
+</button>

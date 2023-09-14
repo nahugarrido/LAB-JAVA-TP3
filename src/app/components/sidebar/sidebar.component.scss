@@ -1,0 +1,53 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-component-width);
+    background-color: var(--sidebar-component-background-color);
+    border-right: 1px solid var(--border-color-primary);
+    box-shadow: 0 0 2px var(--border-color-primary);
+    transition: transform 2s ease-in-out;
+}
+
+#close-sidebar {
+    /// remover estilos de boton
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+
+    /// posicionamiento de icono
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1.5vh;
+    right: 2vw;
+    color: var(--primary-color);
+    background-color: #fff;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 2em;
+    z-index: 1055;
+    i {
+        margin-top: 5px;
+    }
+}    
+
+.invert-color {
+    background-color: var(--primary-color);
+    color: #fff;
+    color: var(--primary-color);
+    background-color: #fff;
+}
+
+.sidebar-hidden {
+    transform: translateX(-100%);
+  }

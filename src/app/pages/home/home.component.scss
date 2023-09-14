@@ -1,0 +1,10 @@
+.home-component {
+    min-height: calc(var(--home-component-height) - var(--header-component-height));
+    width: 100%;
+}
+
+.main-content {
+    height: calc(var(--home-component-height) - var(--header-component-height));
+    margin-left: var(--sidebar-component-width);
+    margin-top: var(--header-component-height);
+}
