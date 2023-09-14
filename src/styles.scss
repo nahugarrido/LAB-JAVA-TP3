@@ -14,7 +14,7 @@
     --header-component-background-color: #fff;
     --body-component-backgroud-color: #d1e2fbcf;
     --cover-component-background-color: #293a68;
-    --sidebar-component-background-color: #202b46; 
+    --sidebar-component-background-color: #263353;
     --sidebar-component-width: 14rem;
     --border-color-primary: #d1d1d1;
 }
@@ -23,7 +23,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif !important;
 }
 
 body {

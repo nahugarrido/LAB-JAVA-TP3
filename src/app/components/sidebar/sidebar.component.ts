@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +10,9 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isSidebarVisible: boolean = true;
   windowInnerWidth: number = window.innerWidth; // Agregar esta propiedad
+  active = 'inicio';
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.checkScreenWidth();

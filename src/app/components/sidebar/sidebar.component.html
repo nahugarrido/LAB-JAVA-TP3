@@ -1,5 +1,28 @@
 <aside class="sidebar" [class.sidebar-hidden]="!isSidebarVisible">
-  <p>sidebar works!</p>
+  <nav
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav-pills flex-column"
+    orientation="vertical"
+  >
+    <span>MENU DE OPCIONES</span>
+    <ng-container ngbNavItem="inicio">
+      <button ngbNavLink [routerLink]="['/dashboard/' + '']">Inicio</button>
+    </ng-container>
+    <ng-container ngbNavItem="empleados">
+      <button ngbNavLink [routerLink]="['/dashboard/' + 'empleados']">
+        Empleados
+      </button>
+    </ng-container>
+    <ng-container ngbNavItem="jornadas">
+      <button ngbNavLink [routerLink]="['/dashboard/' + 'jornadas']">
+        Jornadas
+      </button>
+    </ng-container>
+  </nav>
+
+  <div [ngbNavOutlet]="nav" class="ms-4"></div>
 </aside>
 <button
   id="close-sidebar"

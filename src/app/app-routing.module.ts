@@ -4,16 +4,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'not-found', component: NotFoundComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
-    path: 'home',
+    path: 'dashboard',
     component: HomeComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'cards', component: NotFoundComponent },
+      { path: 'empleados', component: NotFoundComponent },
+      { path: 'jornadas', component: NotFoundComponent },
     ],
   },
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
