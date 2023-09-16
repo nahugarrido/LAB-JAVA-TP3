@@ -10,9 +10,9 @@
     background-color: var(--sidebar-component-background-color);
     border-right: 1px solid var(--border-color-primary);
     box-shadow: 0 0 2px var(--border-color-primary);
-    transition: transform 1s ease;
+    transition: transform var(--sidebar-animation-time) ease;
     color: #868fa8;
-
+    z-index: 1053;
     span {
         font-size: 0.8em;
         padding: 10px 0;
@@ -36,6 +36,17 @@
     }
 }
 
+.close-sidebar-box {
+    position: fixed;
+    top: 0;
+    right: 4%;
+    height: var(--header-component-height);;
+    display: flex;
+    align-items: center;
+    z-index: 1055;
+
+}
+
 #close-sidebar {
     /// remover estilos de boton
     border: none;
@@ -46,33 +57,24 @@
     cursor: pointer;
     outline: inherit;
     border-radius: 100%;
-    height: 50px;
-    width: 50px;
+    height: 2.5rem;
+    width: 2.5rem;
 
     /// posicionamiento de icono
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 1.5vh;
-    right: 2vw;
     color: var(--primary-color);
     background-color: #fff;
     background-color: var(--primary-color);
     color: #fff;
     font-size: 2em;
-    z-index: 1055;
     i {
         margin-top: 5px;
     }
 }    
 
-.invert-color {
-    background-color: var(--primary-color);
-    color: #fff;
-    color: var(--primary-color);
-    background-color: #fff;
-}
+
 
 .sidebar-hidden {
     transform: translateX(-100%);

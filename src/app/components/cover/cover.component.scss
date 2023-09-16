@@ -43,11 +43,20 @@
     letter-spacing: 0.2rem;
     margin-bottom: 10vh;
 
+    .cover-logo {
+        width: 16rem;
+        img{
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
     h1 {
         font-weight: 600;
     }
 
     h2 {
+        color: #e8e7ea;
         font-weight: 500;
     }
 }
@@ -80,13 +89,13 @@
         }
     }
 
-    .cover-overlay {
-        align-items: baseline;
-    }
-
     .cover-content {
         padding: 10vh 0;
-        margin-bottom: 0;
+
+        .cover-logo {
+            width: 12rem;
+        }
+
         h1 {
             font-size: 2.6em;
         }

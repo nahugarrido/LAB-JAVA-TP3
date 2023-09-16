@@ -7,4 +7,9 @@
     height: calc(var(--home-component-height) - var(--header-component-height));
     margin-left: var(--sidebar-component-width);
     margin-top: var(--header-component-height);
+    transition: margin-left var(--sidebar-animation-time);
+}
+
+.mobile {
+    margin-left: 0;
 }

@@ -1,9 +1,44 @@
 header {
     position: fixed;
+    display: flex;
+    align-items: center;
     width: 100%;
     top: 0;
+    padding-top: 5px;
     height: var(--header-component-height);
     background-color: var(--header-component-background-color);
     border-bottom: 1px solid var(--border-color-primary);
     box-shadow: 0 0 2px var(--border-color-primary);
+    z-index: 1054;
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--sidebar-component-width);
+    }
+    
+    .header-logo {
+        width: 8rem;
+        img{
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
+
+
+
+@media(max-width: 768px) {
+    header {
+        .box {
+            margin-left: 8%;
+            justify-content: flex-start;
+        }
+
+
+        .header-logo {
+            width: 6rem;
+        }
+    }
 }
