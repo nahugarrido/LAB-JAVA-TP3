@@ -11,7 +11,7 @@
 
 .card-example {
     flex: 1;
-    background-color: #fff;
+    background-color: var(--card-component-background-color);
     height: 25vh;
 }
 
@@ -20,7 +20,7 @@
     padding: 3% 3%;
 
     flex-basis: 100%;
-    background-color: #fff;
+    background-color: var(--card-component-background-color);
 
 }
 
