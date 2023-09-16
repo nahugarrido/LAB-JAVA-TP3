@@ -1,24 +1,40 @@
 .empleados-component {
-    background-color: rgba(0, 246, 246, 0.395);
-    height: 100%;
+    min-height: 100%;
     min-width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content:space-evenly;
-    padding: 3% 3%;
+    padding: 3%;
     gap: 2rem;
 }
 
 
-.card {
+.card-example {
     flex: 1;
-    background-color: bisque;
-    height: 40%;
+    background-color: #fff;
+    height: 25vh;
 }
 
 .table-example {
-    height: 70%;
-    flex-basis: calc(100% - 20px);
-    background-color: bisque;
+    height: 60vh;
+    padding: 3% 3%;
 
+    flex-basis: 100%;
+    background-color: #fff;
+
+}
+
+@media(max-width: 768px) {
+    .empleados-component {
+        padding: 5%;
+    }
+
+    .card-example {
+        min-width: calc(100% - 20px);
+        height: 10vh;
+    }
+
+    .table-example {
+        height: 60vh;
+    }
 }
