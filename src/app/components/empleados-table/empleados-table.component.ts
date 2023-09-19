@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { EmpleadoResponse } from 'src/app/models/empleado-response';
+import { EmpleadoResponse } from 'src/app/models/empleado-response.model';
 import { EmpleadoModalComponent } from 'src/app/modals/empleado-modal/empleado-modal.component';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
@@ -19,16 +19,17 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
   styleUrls: ['./empleados-table.component.scss'],
 })
 export class EmpleadosTableComponent implements OnInit, OnChanges {
+  isTablet: boolean = false;
+  isMobile: boolean = false;
+  windowInnerWidth: number = window.innerWidth;
+
   @Output() updateEmpleados = new EventEmitter();
   @Input() empleados: EmpleadoResponse[] = [];
   @ViewChild(EmpleadoModalComponent)
   empleadoModal!: EmpleadoModalComponent;
-  windowInnerWidth: number = window.innerWidth;
-  isTablet: boolean = false;
-  isMobile: boolean = false;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  public onResize(event: any) {
     this.checkScreenWidth();
   }
 
@@ -42,26 +43,6 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
     this.empleados = changes['empleados'].currentValue;
   }
 
-  calcularAnios(fechaNacimiento: string): number {
-    const today = new Date();
-    const birthDate = new Date(fechaNacimiento);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const month = today.getMonth() - birthDate.getMonth();
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate()))
-      age--;
-    return age;
-  }
-
-  private checkScreenWidth() {
-    this.windowInnerWidth = window.innerWidth;
-    this.isTablet = this.windowInnerWidth <= 1200;
-    this.isMobile = this.windowInnerWidth <= 768;
-  }
-
-  public handleUpdateEmpleados() {
-    this.updateEmpleados.emit();
-  }
-
   public openEditarEmpleado(empleado: EmpleadoResponse) {
     console.log('entra a open editar empleado');
     console.log(empleado);
@@ -73,5 +54,25 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
       this.empleadoService
         .eliminarEmpleado(id.toString())
         .subscribe(() => this.updateEmpleados.emit());
+  }
+
+  public calcularAnios(fechaNacimiento: string): number {
+    const today = new Date();
+    const birthDate = new Date(fechaNacimiento);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate()))
+      age--;
+    return age;
+  }
+
+  public handleUpdateEmpleados() {
+    this.updateEmpleados.emit();
+  }
+
+  private checkScreenWidth() {
+    this.windowInnerWidth = window.innerWidth;
+    this.isTablet = this.windowInnerWidth <= 1200;
+    this.isMobile = this.windowInnerWidth <= 768;
   }
 }

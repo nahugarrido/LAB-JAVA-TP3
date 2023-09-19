@@ -14,10 +14,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  @Output() isMobile: EventEmitter<boolean> = new EventEmitter();
+  active = 'inicio';
   isSidebarVisible: boolean = true;
   windowInnerWidth: number = window.innerWidth;
-  active = 'inicio';
+
+  @Output() isMobile: EventEmitter<boolean> = new EventEmitter();
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -30,11 +31,11 @@ export class SidebarComponent implements OnInit {
     this.checkScreenWidth();
   }
 
-  toggleSidebar() {
+  public toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
   }
 
-  checkScreenWidth() {
+  private checkScreenWidth() {
     this.windowInnerWidth = window.innerWidth;
     if (this.windowInnerWidth <= 768) {
       this.isSidebarVisible = false;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EmpleadoResponse } from '../models/empleado-response';
+import { EmpleadoResponse } from '../models/empleado-response.model';
 import { EmpleadoRequest } from '../models/empleado-request.model';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';

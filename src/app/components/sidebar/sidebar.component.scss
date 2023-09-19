@@ -8,8 +8,6 @@
     bottom: 0;
     width: var(--sidebar-component-width);
     background-color: var(--sidebar-component-background-color);
-    border-right: 1px solid var(--border-color-primary);
-    box-shadow: 0 0 2px var(--border-color-primary);
     transition: transform var(--sidebar-animation-time) ease;
     color: #868fa8;
     z-index: 1053;
@@ -84,7 +82,7 @@
     bottom: 0;
     top: 0;
     left: 0;
-    background-color: #2b60ff12;
+    background-color: rgba(43, 96, 255, 0.297);
     z-index: 1052;
   }
 
