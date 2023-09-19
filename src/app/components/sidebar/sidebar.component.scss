@@ -9,7 +9,7 @@
     width: var(--sidebar-component-width);
     background-color: var(--sidebar-component-background-color);
     transition: transform var(--sidebar-animation-time) ease;
-    color: #868fa8;
+    color: ghostwhite;
     z-index: 1053;
     span {
         font-size: 0.8em;
@@ -21,15 +21,15 @@
         margin: 16% 5%;
 
         button {
-            color: #868fa8 !important;
+            color: #80a0e2 !important;
             margin: 5px 5px;
             &:hover {
-                color: #fff !important;
+                color: ghostwhite !important;
             }
         }
 
         .active {
-            color: #fff !important;
+            color: ghostwhite !important;
         }
     }
 }
@@ -82,7 +82,7 @@
     bottom: 0;
     top: 0;
     left: 0;
-    background-color: rgba(43, 96, 255, 0.297);
+    background-color: rgba(0, 64, 255, 0.297);
     z-index: 1052;
   }
 

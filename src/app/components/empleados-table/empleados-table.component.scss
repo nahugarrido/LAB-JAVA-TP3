@@ -18,8 +18,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        background-color: var(--sidebar-component-background-color);
+        background-color: var(--dashboard-item-background-color);
+        transition: var(--background-transition);
         color: #fff;
 
         &:hover {

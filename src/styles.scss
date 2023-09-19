@@ -7,17 +7,23 @@
 @import 'bootstrap/scss/bootstrap';
 
 :root {
-    --primary-color: #0d6efd;
     --home-component-height: 100vh;
     --header-component-height: 10vh;
-    --header-component-background-color: #fff;
+    --sidebar-component-width: 14rem;
     --body-component-backgroud-color: #d1e2fbcf;
+    --header-component-background-color: #fff;
     --cover-component-background-color: #293a68;
     --sidebar-component-background-color: #263353;
-    --sidebar-component-width: 14rem;
+    --sidebar-component-background-color: #001d49;
+    --dashboard-item-background-color: #0040a0;
+    --card-component-background-color: #fff;
+    --primary-color: #0d6efd;
+    /* --primary-color: #e67300; */
+
+    --primary-color-hover: #2a7fff;
     --border-color-primary: #d1d1d1;
     --sidebar-animation-time: 0.5s;
-    --card-component-background-color: #fff;
+    --background-transition: background-color 0.2s ease;
 }
 
 * {

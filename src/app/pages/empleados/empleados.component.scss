@@ -18,26 +18,45 @@
  
 .card-example {
     flex: 1;
-    background-color: var(--sidebar-component-background-color);
+    background-color: var(--dashboard-item-background-color);
     color: #fff;
     height: 20vh;
     display: flex;
 }
 
 .table-example {
-    height: 60vh;
+    min-height: 60vh;
     flex-basis: 100%;
     max-width: 100%;
     background-color: var(--card-component-background-color);
 }
 
 .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
     background-color: var(--primary-color);
     color: #fff;
     height: 30vh;
+    transition: var(--background-transition);
+
+    button {
+        border: none;
+        background-color: transparent;
+        font-family: 'Maven Pro', sans-serif;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    i {
+        font-size: 4em;
+    }
 
     &:hover {
         cursor: pointer;
+        background-color: var(--primary-color-hover);
     }
 }
 
@@ -52,11 +71,6 @@
     }
 
     .table-example {
-        height: 60vh;
+        min-height: 80vh;
     }
-}
-
-
-.test {
-    z-index: 5000;
 }
