@@ -1,0 +1,34 @@
+.edit-buttons {
+    display: flex;
+    justify-content: end;
+    margin-right: 5%;
+    button {
+        /// remover estilos de boton
+        border: none;
+        margin: 0 5px;
+        padding: 0;
+        background: none;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        border-radius: 100%;
+        height: 2.5rem;
+        width: 2.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: var(--sidebar-component-background-color);
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+            background-color: var(--primary-color);
+        }
+
+        i {
+            font-size: 1.2em;
+        }
+    }
+}

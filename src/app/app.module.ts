@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { EmpleadosTableComponent } from './components/empleados-table/empleados-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EmpleadoModalComponent } from './modals/empleado-modal/empleado-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,16 @@ import { InicioComponent } from './pages/inicio/inicio.component';
     HeaderComponent,
     EmpleadosComponent,
     InicioComponent,
+    EmpleadosTableComponent,
+    EmpleadoModalComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, NgbModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

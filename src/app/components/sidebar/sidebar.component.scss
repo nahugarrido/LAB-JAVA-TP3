@@ -74,8 +74,20 @@
     }
 }    
 
-
-
 .sidebar-hidden {
     transform: translateX(-100%);
   }
+
+  .backdrop {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    background-color: #2b60ff12;
+    z-index: 1052;
+  }
+
+.backdrop-hidden {
+    display: none;
+}

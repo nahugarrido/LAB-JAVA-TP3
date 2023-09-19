@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmpleadoResponse } from '../models/empleado-response';
-import { EmpleadoRequest } from '../models/empleado-request';
+import { EmpleadoRequest } from '../models/empleado-request.model';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EmpleadoService {
-  apiUrl = environment.baseUrl + '/empleados';
+  apiUrl = environment.baseUrl + '/empleado';
   constructor(private http: HttpClient) {}
 
   registrarempleado(empleado: EmpleadoRequest): Observable<EmpleadoResponse> {
@@ -47,15 +47,11 @@ export class EmpleadoService {
   }
 
   // Error handling
-  handleError(error: any) {
-    let errorMessage = '';
-
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-
-    console.log(errorMessage);
-    window.alert(errorMessage);
-    return throwError(() => {
-      return errorMessage;
+  handleError(err: any) {
+    console.log(err);
+    return throwError({
+      message: err.error.message,
+      status: err.status,
     });
   }
 }

@@ -1,0 +1,38 @@
+<h2>Empleados</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre Completo</th>
+      <th *ngIf="!isMobile" scope="col">N° Documento</th>
+      <th *ngIf="!isMobile" scope="col">Email</th>
+      <th *ngIf="!isTablet" scope="col">Edad</th>
+      <th *ngIf="!isTablet" scope="col">Antiguedad</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let empleado of empleados; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
+      <td *ngIf="!isMobile">{{ empleado.nroDocumento | number }}</td>
+      <td *ngIf="!isMobile">{{ empleado.email }}</td>
+      <td *ngIf="!isTablet">
+        {{ this.calcularAnios(empleado.fechaNacimiento) }} años
+      </td>
+      <td *ngIf="!isTablet">
+        {{ this.calcularAnios(empleado.fechaIngreso) }} años
+      </td>
+      <td>
+        <div class="edit-buttons">
+          <button>
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button>
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

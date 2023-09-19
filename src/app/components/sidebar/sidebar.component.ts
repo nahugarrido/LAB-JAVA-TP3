@@ -19,6 +19,11 @@ export class SidebarComponent implements OnInit {
   windowInnerWidth: number = window.innerWidth;
   active = 'inicio';
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -27,11 +32,6 @@ export class SidebarComponent implements OnInit {
 
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenWidth();
   }
 
   checkScreenWidth() {

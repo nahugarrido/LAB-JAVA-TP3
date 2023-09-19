@@ -34,3 +34,8 @@
     <i *ngIf="!isSidebarVisible" class="bi bi-list"></i>
   </button>
 </div>
+<div
+  class="backdrop"
+  [class.backdrop-hidden]="!isSidebarVisible || windowInnerWidth >= 768"
+  (click)="toggleSidebar()"
+></div>

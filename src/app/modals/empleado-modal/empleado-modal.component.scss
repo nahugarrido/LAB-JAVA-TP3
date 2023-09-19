@@ -1,0 +1,23 @@
+.error-message{
+    color: red;
+    font-size: 0.9em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+        margin: 0 0.5em;
+        border-radius: 0.5em;
+    }
+    .btn-primary {
+        background-color: var(--primary-color);
+    }
+}
+
+.error-backend-section {
+    display: flex;
+    justify-content: center;
+    margin: 5% 0;
+}

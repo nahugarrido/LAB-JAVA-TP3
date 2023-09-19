@@ -6,22 +6,39 @@
     justify-content:space-evenly;
     padding: 3%;
     gap: 2rem;
+    overflow-x: auto;
 }
 
-
+ .card {
+    border: 1px solid #aebcd0cf;
+    border-radius: 0.6rem;   
+    box-shadow: 0 0 2px #aebcd0cf;
+    padding: 2%;
+}
+ 
 .card-example {
     flex: 1;
-    background-color: var(--card-component-background-color);
-    height: 25vh;
+    background-color: var(--sidebar-component-background-color);
+    color: #fff;
+    height: 20vh;
+    display: flex;
 }
 
 .table-example {
     height: 60vh;
-    padding: 3% 3%;
-
     flex-basis: 100%;
+    max-width: 100%;
     background-color: var(--card-component-background-color);
+}
 
+.add-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 30vh;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 @media(max-width: 768px) {
@@ -37,4 +54,9 @@
     .table-example {
         height: 60vh;
     }
+}
+
+
+.test {
+    z-index: 5000;
 }

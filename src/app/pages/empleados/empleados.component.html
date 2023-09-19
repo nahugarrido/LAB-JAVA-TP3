@@ -1,18 +1,18 @@
+<app-empleado-modal></app-empleado-modal>
 <section class="empleados-component">
-  <div class="card-example">
+  <div class="card-example card add-button" (click)="openRegistrarEmpleado()">
+    <h2>Agregar Empleado nuevo</h2>
+  </div>
+  <div class="card-example card">
+    <h2>Empleados Activos</h2>
+    <h3>Semana</h3>
+    <p>25</p>
+  </div>
+  <div class="card-example card">
     <h2>Empleados Totales</h2>
     <p>25</p>
   </div>
-  <div class="card-example">
-    <h2>Empleados Totales</h2>
-    <p>25</p>
-  </div>
-  <div class="card-example">
-    <h2>Empleados Totales</h2>
-    <p>25</p>
-  </div>
-
-  <div class="table-example">
-    <h2>Tabla de empleados</h2>
+  <div class="table-example card">
+    <app-empleados-table></app-empleados-table>
   </div>
 </section>

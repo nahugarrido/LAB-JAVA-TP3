@@ -10,6 +10,5 @@ export class HomeComponent {
 
   isMobileHandler(bool: boolean) {
     this.isMobile = bool;
-    console.log('isMobile', bool);
   }
 }
