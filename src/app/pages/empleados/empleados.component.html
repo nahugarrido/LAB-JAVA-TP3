@@ -1,4 +1,6 @@
-<app-empleado-modal></app-empleado-modal>
+<app-empleado-modal
+  (updateEmpleados)="handleUpdateEmpleados()"
+></app-empleado-modal>
 <section class="empleados-component">
   <div class="card-example card add-button" (click)="openRegistrarEmpleado()">
     <h2>Agregar Empleado nuevo</h2>
@@ -13,6 +15,9 @@
     <p>25</p>
   </div>
   <div class="table-example card">
-    <app-empleados-table></app-empleados-table>
+    <app-empleados-table
+      (updateEmpleados)="handleUpdateEmpleados()"
+      [empleados]="empleados"
+    ></app-empleados-table>
   </div>
 </section>

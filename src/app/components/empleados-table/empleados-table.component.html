@@ -1,3 +1,6 @@
+<app-empleado-modal
+  (updateEmpleados)="handleUpdateEmpleados()"
+></app-empleado-modal>
 <h2>Empleados</h2>
 <table class="table table-striped">
   <thead>
@@ -25,10 +28,10 @@
       </td>
       <td>
         <div class="edit-buttons">
-          <button>
+          <button (click)="openEditarEmpleado(empleado)">
             <i class="bi bi-pencil"></i>
           </button>
-          <button>
+          <button (click)="openEliminarEmpleado(empleado.id)">
             <i class="bi bi-trash"></i>
           </button>
         </div>

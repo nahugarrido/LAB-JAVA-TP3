@@ -1,6 +1,9 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Agregar Empleado</h4>
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ isEditing ? "Editar Empleado" : "Agregar Empleado" }}
+    </h4>
+
     <button
       type="button"
       #closebtn
@@ -114,10 +117,11 @@
           </div>
           <div>
             <button
+              [disabled]="form.invalid"
               class="input-group"
               type="submit"
               class="btn btn-primary"
-              (click)="guardarEmpleado()"
+              (click)="isEditing ? actualizarEmpleado() : guardarEmpleado()"
             >
               Guardar
             </button>
@@ -129,9 +133,5 @@
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-    <!--     <pre>
-      {{ form.value | json }}
-    </pre> -->
-  </div>
+  <div class="modal-footer"></div>
 </ng-template>

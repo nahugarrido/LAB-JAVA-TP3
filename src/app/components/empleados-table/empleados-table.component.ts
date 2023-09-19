@@ -1,5 +1,16 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { EmpleadoResponse } from 'src/app/models/empleado-response';
+import { EmpleadoModalComponent } from 'src/app/modals/empleado-modal/empleado-modal.component';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
@@ -7,8 +18,11 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
   templateUrl: './empleados-table.component.html',
   styleUrls: ['./empleados-table.component.scss'],
 })
-export class EmpleadosTableComponent implements OnInit {
-  empleados!: EmpleadoResponse[];
+export class EmpleadosTableComponent implements OnInit, OnChanges {
+  @Output() updateEmpleados = new EventEmitter();
+  @Input() empleados: EmpleadoResponse[] = [];
+  @ViewChild(EmpleadoModalComponent)
+  empleadoModal!: EmpleadoModalComponent;
   windowInnerWidth: number = window.innerWidth;
   isTablet: boolean = false;
   isMobile: boolean = false;
@@ -18,24 +32,14 @@ export class EmpleadosTableComponent implements OnInit {
     this.checkScreenWidth();
   }
 
-  constructor(private empleadoService: EmpleadoService) {
-    this.updateEmpleados();
-  }
+  constructor(private empleadoService: EmpleadoService) {}
 
   ngOnInit(): void {
     this.checkScreenWidth();
   }
 
-  updateEmpleados() {
-    this.empleadoService.obtenerEmpleados().subscribe(
-      (data) => {
-        console.log('empleados' + data);
-        this.empleados = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  ngOnChanges(changes: SimpleChanges): void {
+    this.empleados = changes['empleados'].currentValue;
   }
 
   calcularAnios(fechaNacimiento: string): number {
@@ -48,9 +52,26 @@ export class EmpleadosTableComponent implements OnInit {
     return age;
   }
 
-  checkScreenWidth() {
+  private checkScreenWidth() {
     this.windowInnerWidth = window.innerWidth;
     this.isTablet = this.windowInnerWidth <= 1200;
     this.isMobile = this.windowInnerWidth <= 768;
+  }
+
+  public handleUpdateEmpleados() {
+    this.updateEmpleados.emit();
+  }
+
+  public openEditarEmpleado(empleado: EmpleadoResponse) {
+    console.log('entra a open editar empleado');
+    console.log(empleado);
+    this.empleadoModal.editarEmpleado(empleado);
+  }
+
+  public openEliminarEmpleado(id: number) {
+    if (confirm('¿Está seguro que desea eliminar el empleado?'))
+      this.empleadoService
+        .eliminarEmpleado(id.toString())
+        .subscribe(() => this.updateEmpleados.emit());
   }
 }

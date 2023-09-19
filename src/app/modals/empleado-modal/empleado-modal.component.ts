@@ -1,4 +1,11 @@
-import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,6 +16,7 @@ import {
 
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmpleadoRequest } from 'src/app/models/empleado-request.model';
+import { EmpleadoResponse } from 'src/app/models/empleado-response';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
@@ -20,14 +28,17 @@ export class EmpleadoModalComponent implements OnInit {
   form!: FormGroup;
   backendErrorMessage = '';
   mostrarBackendErrorMessage = false;
+  isEditing = false;
+  idEditing!: string;
+
+  @Output() updateEmpleados = new EventEmitter();
+  @ViewChild('content') addview!: ElementRef;
 
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private empleadoService: EmpleadoService
   ) {}
-
-  @ViewChild('content') addview!: ElementRef;
 
   ngOnInit(): void {
     this.initFormGroup();
@@ -132,6 +143,9 @@ export class EmpleadoModalComponent implements OnInit {
 
     this.empleadoService.registrarempleado(this.form.value).subscribe(
       (result) => {
+        this.updateEmpleados.emit();
+        console.log('se emite evento en modal');
+        this.modalService.dismissAll();
         console.log(result);
       },
       (error) => {
@@ -143,5 +157,40 @@ export class EmpleadoModalComponent implements OnInit {
         console.log('complete');
       }
     );
+  }
+
+  public editarEmpleado(empleado: EmpleadoResponse) {
+    console.log('entra a editar empleado');
+    this.open();
+    this.isEditing = true;
+    this.form.setValue({
+      nombre: empleado.nombre,
+      apellido: empleado.apellido,
+      email: empleado.email,
+      nroDocumento: empleado.nroDocumento,
+      fechaNacimiento: empleado.fechaNacimiento,
+      fechaIngreso: empleado.fechaIngreso,
+    });
+    this.idEditing = empleado.id.toString();
+  }
+
+  public actualizarEmpleado() {
+    this.empleadoService
+      .actualizarEmpleado(this.idEditing, this.form.value)
+      .subscribe(
+        (result) => {
+          this.updateEmpleados.emit();
+          this.modalService.dismissAll();
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+          this.mostrarBackendErrorMessage = true;
+          this.backendErrorMessage = error?.message;
+        },
+        () => {
+          console.log('complete');
+        }
+      );
   }
 }

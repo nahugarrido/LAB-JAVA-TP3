@@ -27,7 +27,7 @@ export class EmpleadoService {
 
   obtenerEmpleado(id: String): Observable<EmpleadoResponse> {
     return this.http
-      .get<EmpleadoResponse>(this.apiUrl + id)
+      .get<EmpleadoResponse>(this.apiUrl + `/${id}`)
       .pipe(retry(1), catchError(this.handleError));
   }
 
@@ -36,13 +36,13 @@ export class EmpleadoService {
     empleado: EmpleadoRequest
   ): Observable<EmpleadoResponse> {
     return this.http
-      .put<EmpleadoResponse>(this.apiUrl + id, empleado)
+      .put<EmpleadoResponse>(this.apiUrl + `/${id}`, empleado)
       .pipe(retry(1), catchError(this.handleError));
   }
 
   eliminarEmpleado(id: String): Observable<any> {
     return this.http
-      .delete(this.apiUrl + id)
+      .delete(this.apiUrl + `/${id}`)
       .pipe(retry(1), catchError(this.handleError));
   }
 
