@@ -15,6 +15,8 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { EmpleadosTableComponent } from './components/empleados-table/empleados-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmpleadoModalComponent } from './modals/empleado-modal/empleado-modal.component';
+import { EmpleadoEliminarModalComponent } from './modals/empleado-eliminar-modal/empleado-eliminar-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { EmpleadoModalComponent } from './modals/empleado-modal/empleado-modal.c
     InicioComponent,
     EmpleadosTableComponent,
     EmpleadoModalComponent,
+    EmpleadoEliminarModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { EmpleadoModalComponent } from './modals/empleado-modal/empleado-modal.c
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

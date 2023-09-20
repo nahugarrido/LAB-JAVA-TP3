@@ -1,0 +1,38 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Eliminar Empleado</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    ¿Estas seguro de que deseas eliminar a este empleado?
+  </div>
+  <div class="modal-footer">
+    <div class="mb-3">
+      <div class="modal-buttons">
+        <div>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="modal.close('Save click')"
+          >
+            Cancelar
+          </button>
+        </div>
+        <div>
+          <button
+            class="input-group"
+            class="btn btn-primary"
+            (click)="eliminarEmpleado(idEmpleado)"
+          >
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
