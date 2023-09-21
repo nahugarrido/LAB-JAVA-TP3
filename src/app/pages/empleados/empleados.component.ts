@@ -12,8 +12,10 @@ export class EmpleadosComponent {
   @ViewChild(EmpleadoModalComponent)
   empleadoModal!: EmpleadoModalComponent;
   empleados!: EmpleadoResponse[];
+  totalEmpleados!: number;
 
   constructor(private empleadoService: EmpleadoService) {
+    this.totalEmpleados = 0;
     this.updateEmpleados();
   }
 
@@ -21,6 +23,7 @@ export class EmpleadosComponent {
     this.empleadoService.obtenerEmpleados().subscribe(
       (data) => {
         this.empleados = data;
+        this.totalEmpleados = this.empleados.length;
       },
       (error) => {
         console.log(error);
@@ -28,11 +31,11 @@ export class EmpleadosComponent {
     );
   }
 
-  openRegistrarEmpleado() {
+  public openRegistrarEmpleado() {
     this.empleadoModal.open();
   }
 
-  handleUpdateEmpleados() {
+  public handleUpdateEmpleados() {
     this.updateEmpleados();
   }
 }

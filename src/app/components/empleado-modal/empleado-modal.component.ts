@@ -64,12 +64,10 @@ export class EmpleadoModalComponent implements OnInit {
     }
 
     this.parseForm(this.form.value);
-    console.log(this.form.getRawValue());
 
     this.empleadoService.registrarempleado(this.form.value).subscribe(
       (result) => {
         this.updateEmpleados.emit();
-        console.log('se emite evento en modal');
         this.modalService.dismissAll();
         this.toastr.success(
           'Empleado creado con exito 😋',
@@ -82,9 +80,7 @@ export class EmpleadoModalComponent implements OnInit {
         this.mostrarBackendErrorMessage = true;
         this.backendErrorMessage = error?.message;
       },
-      () => {
-        console.log('complete');
-      }
+      () => {}
     );
   }
 
@@ -144,8 +140,6 @@ export class EmpleadoModalComponent implements OnInit {
   }
 
   private parseForm(form: any): EmpleadoRequest {
-    console.log(form);
-
     const parsedForm: any = {};
     Object.keys(form).forEach((key) => {
       parsedForm[key] = form[key].trim();

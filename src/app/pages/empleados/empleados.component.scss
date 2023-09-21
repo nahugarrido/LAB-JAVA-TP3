@@ -16,7 +16,7 @@
     padding: 2%;
 }
  
-.card-example {
+.card-item {
     flex: 1;
     background-color: var(--dashboard-item-background-color);
     color: #fff;
@@ -25,13 +25,17 @@
     justify-content: center;
     align-items: center;
 
+    span {
+        font-size: 1.6em;
+    }
+
     h2{
         padding: 10px;
         font-size: 1.5rem;
     }
 }
 
-.table-example {
+.table-item {
     min-height: 60vh;
     flex-basis: 100%;
     max-width: 100%;
@@ -72,12 +76,16 @@
         padding: 5%;
     }
 
-    .card-example {
+    .card-item {
         min-width: calc(100% - 20px);
-        height: 10vh;
+        min-height: 16vh;
+
+        span {
+            font-size: 1.4em;
+        }
     }
 
-    .table-example {
+    .table-item {
         min-height: 60vh;
     }
 }

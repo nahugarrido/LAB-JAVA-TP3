@@ -6,13 +6,16 @@
     <button>Agregar Empleado</button>
     <i class="bi bi-person-add"></i>
   </div>
-  <div class="card-example card">
-    <h2>Empleados Activos</h2>
-  </div>
-  <div class="card-example card">
+  <div class="card-item card">
     <h2>Empleados Totales</h2>
+    <span>{{ totalEmpleados }}</span>
   </div>
-  <div class="table-example card">
+  <!-- No implementado -->
+  <div class="card-item card">
+    <h2>Empleados Activos</h2>
+    <span>-</span>
+  </div>
+  <div class="table-item card">
     <app-empleados-table
       (updateEmpleados)="handleUpdateEmpleados()"
       [empleados]="empleados"
