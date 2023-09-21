@@ -18,6 +18,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmpleadoRequest } from 'src/app/models/empleado-request.model';
 import { EmpleadoResponse } from 'src/app/models/empleado-response.model';
 import { EmpleadoService } from 'src/app/services/empleado.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-empleado-modal',
@@ -37,7 +38,8 @@ export class EmpleadoModalComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private empleadoService: EmpleadoService
+    private empleadoService: EmpleadoService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,10 @@ export class EmpleadoModalComponent implements OnInit {
         this.updateEmpleados.emit();
         console.log('se emite evento en modal');
         this.modalService.dismissAll();
+        this.toastr.success(
+          'Empleado creado con exito 😋',
+          'Empleado agregado'
+        );
         console.log(result);
       },
       (error) => {
@@ -83,7 +89,6 @@ export class EmpleadoModalComponent implements OnInit {
   }
 
   public editarEmpleado(empleado: EmpleadoResponse) {
-    console.log('entra a editar empleado');
     this.open();
     this.isEditing = true;
     this.form.setValue({
@@ -104,16 +109,15 @@ export class EmpleadoModalComponent implements OnInit {
         (result) => {
           this.updateEmpleados.emit();
           this.modalService.dismissAll();
+          this.toastr.success('Datos actualizados 😋', 'Empleado actualizado');
           console.log(result);
         },
         (error) => {
-          console.log(error);
           this.mostrarBackendErrorMessage = true;
           this.backendErrorMessage = error?.message;
+          console.log(error);
         },
-        () => {
-          console.log('complete');
-        }
+        () => {}
       );
   }
 

@@ -5,14 +5,9 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-
-import {
-  ModalDismissReasons,
-  NgbDatepickerModule,
-  NgbModal,
-} from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmpleadoService } from 'src/app/services/empleado.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-empleado-eliminar-modal',
@@ -26,7 +21,8 @@ export class EmpleadoEliminarModalComponent {
 
   constructor(
     private modalService: NgbModal,
-    private empleadoService: EmpleadoService
+    private empleadoService: EmpleadoService,
+    private toastr: ToastrService
   ) {}
 
   public open(idEmpleado: number) {
@@ -42,6 +38,7 @@ export class EmpleadoEliminarModalComponent {
       (response) => {
         this.updateEmpleados.emit();
         this.modalService.dismissAll();
+        this.toastr.error('Empleado eliminado con exito 💀', '');
       },
       (error) => {
         console.log(error);

@@ -11,12 +11,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
 import { EmpleadosTableComponent } from './components/empleados-table/empleados-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmpleadoModalComponent } from './modals/empleado-modal/empleado-modal.component';
 import { EmpleadoEliminarModalComponent } from './modals/empleado-eliminar-modal/empleado-eliminar-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,18 +28,19 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     EmpleadosComponent,
-    InicioComponent,
     EmpleadosTableComponent,
     EmpleadoModalComponent,
     EmpleadoEliminarModalComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
     FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

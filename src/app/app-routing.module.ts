@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -11,7 +10,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: HomeComponent,
     children: [
-      { path: '', component: InicioComponent, pathMatch: 'full' },
+      { path: '', component: EmpleadosComponent, pathMatch: 'full' },
       { path: 'empleados', component: EmpleadosComponent },
       { path: 'jornadas', component: NotFoundComponent },
     ],

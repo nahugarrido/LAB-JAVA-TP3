@@ -20,7 +20,6 @@ export class EmpleadosComponent {
   private updateEmpleados() {
     this.empleadoService.obtenerEmpleados().subscribe(
       (data) => {
-        console.log('empleados' + data);
         this.empleados = data;
       },
       (error) => {
@@ -35,6 +34,5 @@ export class EmpleadosComponent {
 
   handleUpdateEmpleados() {
     this.updateEmpleados();
-    console.log('handleUpdateEmpleados en empleados');
   }
 }

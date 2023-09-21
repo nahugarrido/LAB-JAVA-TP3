@@ -8,19 +8,12 @@ import {
   EventEmitter,
   SimpleChanges,
   ViewChild,
-  PipeTransform,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EmpleadoResponse } from 'src/app/models/empleado-response.model';
 import { EmpleadoModalComponent } from 'src/app/modals/empleado-modal/empleado-modal.component';
 import { EmpleadoEliminarModalComponent } from 'src/app/modals/empleado-eliminar-modal/empleado-eliminar-modal.component';
 import { EmpleadoService } from 'src/app/services/empleado.service';
-import {
-  NgbPaginationModule,
-  NgbTypeaheadModule,
-} from '@ng-bootstrap/ng-bootstrap';
-import { Observable, of } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empleados-table',
@@ -30,10 +23,13 @@ import { map, startWith } from 'rxjs/operators';
 export class EmpleadosTableComponent implements OnInit, OnChanges {
   isTablet: boolean = false;
   isMobile: boolean = false;
+  windowInnerWidth: number = window.innerWidth;
   page = 1;
   pageSize = 5;
-  windowInnerWidth: number = window.innerWidth;
+  empleadosSlice: EmpleadoResponse[] = [];
+  filteredEmpleados: EmpleadoResponse[] = [];
   filter = new FormControl('', { nonNullable: true });
+  collectionSize: number = 0;
 
   @Output() updateEmpleados = new EventEmitter();
   @Input() empleados: EmpleadoResponse[] = [];
@@ -41,10 +37,6 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
   empleadoModal!: EmpleadoModalComponent;
   @ViewChild(EmpleadoEliminarModalComponent)
   empleadoEliminarModal!: EmpleadoEliminarModalComponent;
-
-  collectionSize = this.empleados.length;
-  empleadosSlice: EmpleadoResponse[] = [];
-  filteredEmpleados: EmpleadoResponse[] = [];
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any) {
@@ -54,10 +46,8 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
   constructor(private empleadoService: EmpleadoService) {}
 
   ngOnInit(): void {
-    /// filtrar empleados con search
     this.filter.valueChanges.subscribe((newValue) => {
       this.filteredEmpleados = this.search(newValue);
-      console.log('esta funcionando');
       this.refreshEmpleados();
     });
 
@@ -66,7 +56,10 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.empleados = changes['empleados'].currentValue;
-    this.collectionSize = this.empleados.length;
+    this.empleados
+      ? (this.collectionSize = this.empleados.length)
+      : (this.collectionSize = 0);
+
     this.filteredEmpleados = this.search(this.filter.value);
     this.empleadosSlice = this.search(this.filter.value);
     this.refreshEmpleados();
@@ -102,6 +95,10 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
   }
 
   public search(text: string): EmpleadoResponse[] {
+    if (!this.empleados) {
+      return [];
+    }
+
     return this.empleados.filter((empleado) => {
       const term = text.toLowerCase();
       return (
