@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { EmpleadoModalComponent } from 'src/app/modals/empleado-modal/empleado-modal.component';
+import { EmpleadoModalComponent } from 'src/app/components/empleado-modal/empleado-modal.component';
 import { EmpleadoResponse } from 'src/app/models/empleado-response.model';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 

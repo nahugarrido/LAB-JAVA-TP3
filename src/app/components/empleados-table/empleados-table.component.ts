@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EmpleadoResponse } from 'src/app/models/empleado-response.model';
-import { EmpleadoModalComponent } from 'src/app/modals/empleado-modal/empleado-modal.component';
-import { EmpleadoEliminarModalComponent } from 'src/app/modals/empleado-eliminar-modal/empleado-eliminar-modal.component';
+import { EmpleadoModalComponent } from 'src/app/components/empleado-modal/empleado-modal.component';
+import { EmpleadoEliminarModalComponent } from 'src/app/components/empleado-eliminar-modal/empleado-eliminar-modal.component';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
@@ -102,9 +102,9 @@ export class EmpleadosTableComponent implements OnInit, OnChanges {
     return this.empleados.filter((empleado) => {
       const term = text.toLowerCase();
       return (
-        empleado.nombre.toLowerCase().includes(term) ||
-        empleado.apellido.toLowerCase().includes(term) ||
-        empleado.email.toLowerCase().includes(term)
+        empleado.nombre.toLowerCase().startsWith(term) ||
+        empleado.apellido.toLowerCase().startsWith(term) ||
+        empleado.email.toLowerCase().startsWith(term)
       );
     });
   }
